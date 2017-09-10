@@ -1,0 +1,73 @@
+
+   <main class="mdl-layout__content">
+    	<div class="page-content">
+    		<div class="mdl-color--grey-100">
+				
+					<h1 class= "textcenter"><%= @content.name %></h1>
+				
+
+
+			<div class="mdl-grid">
+			  		<div class="mdl-cell mdl-cell--6-col">
+			  	
+			      		<div class="cardshow">
+			 				
+			 					<%= image_tag @content.picture.url(:display),class: "cnimg",:alt => "Sample Image" if @content.picture? %>
+
+					         		<div class="container1">
+					         		
+					         		<%= link_to like_content_path(@content, like: true), method: :post do %>
+
+					          		<i class="material-icons" style="font-size:50px;color:#AA030B;">favorite</i>
+					          	
+					          		<% end %>
+					          		&nbsp&nbsp
+					          		<span class="mdl-badge"  data-badge="<%= @content.totallike %>" >Total Likes</span>
+					         		<hr/>
+					          		<h2> <%= @content.summary %></h2>
+					          		
+					           		<p>
+									<strong>Stepes:</strong>
+									<%= simple_format(@content.description) %>
+						      		</p>
+						      		<% if user_signed_in? and @content.user == current_user %>
+						      		
+
+    								<%= link_to "Edit This", edit_content_path(@content), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+    								
+    								<% end %>
+					  				</div>
+						</div>
+
+
+			 			 
+			 		</div>
+			  		<div class="mdl-cell mdl-cell--2-col">
+
+			  		</div>
+
+			  		<div class="mdl-cell mdl-cell--4-col">
+			  			<div class="cardshow">
+			  			<%= image_tag @content.user.profilepic.url(:thumbnail),:alt => "user" if @content.user.profilepic? %>
+			  			<%= link_to "View Profile", user_path(@content.user), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+							 <div class="container">
+			    				<h3 class="textcenter">Brought to you by: <%= @content.user.username %></h3>
+			    
+			  				 </div>
+						</div>
+					</div>
+
+			</div>
+</div>
+		</div>
+	</main>
+
+
+
+
+
+
+
+
+
+

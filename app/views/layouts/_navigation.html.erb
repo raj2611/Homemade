@@ -1,0 +1,67 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		  			<header class="mdl-layout__header">
+		    				<div class="mdl-layout__header-row">
+		      <!-- Title -->
+		     					 <span class="mdl-layout-title"><h2 class= "logo">HomeMade</h2></span>
+		     					 <!-- Left aligned menu below button -->
+		     					 	
+ <!-- Add spacer, to align navigation to the right -->
+		      					 <div class="mdl-layout-spacer"></div>
+		      <!-- Navigation. We hide it in small screens. -->
+		      					 <nav class="mdl-navigation mdl-layout--large-screen-only">
+		       						 <%= link_to "contents", contents_path, class: "mdl-navigation__link" %>
+		       						<% if user_signed_in? %>
+		        					 <%= link_to "Create", new_content_path, class: "mdl-navigation__link" %>
+		        					
+		        					<%= link_to "By Likes", sortlike_path, class: "mdl-navigation__link" %>
+		        					<%= link_to "Users", users_path, class: "mdl-navigation__link" %>
+		        					<div class="mdl-navigation__link">
+		        					
+		        					<button id="demo-menu-lower-left"
+       								 class="mdl-button mdl-js-button mdl-button--icon">
+  									<i class="material-icons">arrow_drop_down_circle</i>
+									</button>
+									<%= current_user.username %>
+										<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+										    for="demo-menu-lower-left">
+							 <%= link_to "Your profile",user_path(current_user),class: "mdl-menu__item links" %>
+										  <%= link_to "Edit Your profile",edit_user_registration_path(current_user),class: "mdl-menu__item mdl-menu__item--full-bleed-divider links" %>
+										 
+										  <%= link_to "Log Out",destroy_user_session_path,class: "mdl-menu__item links" %>
+										</ul>
+										</div>
+		        					 <% else %>
+
+		        					 <%= link_to "Log In", new_user_session_path, class: "mdl-navigation__link" %>
+		        					 <% end %>
+		      					 </nav>
+		   				    </div>
+		  			</header>
+		  			
+		  	<div class="mdl-layout__drawer">
+		    		<span class="mdl-layout-title"><h3 class= "logo">HomeMade</h3></span>
+		    		<% if user_signed_in? %>
+		    		<hr />
+
+                           &nbsp&nbsp&nbspWelcome <%= current_user.username %>
+                           <nav class="mdl-navigation">
+                           <%= link_to "your profile", user_path(current_user), class: "mdl-navigation__link" %>
+		      				<%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "mdl-navigation__link" %>
+		        					<%= link_to "Log Out", destroy_user_session_path, class: "mdl-navigation__link" %>
+
+
+                           </nav>
+                           <hr />
+                           <% end %>
+		    			<nav class="mdl-navigation">
+							<%= link_to "contents", contents_path, class: "mdl-navigation__link" %>
+							<% if user_signed_in? %>
+		        			<%= link_to "create", new_content_path, class: "mdl-navigation__link" %>
+		      				<%= link_to "By Likes", sortlike_path, class: "mdl-navigation__link" %>
+		        					<%= link_to "Users", users_path, class: "mdl-navigation__link" %>
+
+		      				
+		      				<% end %>
+		    			</nav>
+		  	</div>
+		  	

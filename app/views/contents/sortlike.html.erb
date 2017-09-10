@@ -1,0 +1,59 @@
+
+<main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here -->
+  
+<h1 class="textcenter"> <b>All Contents</b></h1>
+
+<%= will_paginate %>
+<% @contents.each do |content| %>
+<div class="mdl-color--grey-100">
+<br>
+<br>
+<div class="card">
+<%=  image_tag content.user.profilepic.url(:dp),class: "dpimg" if content.user.profilepic?   %>
+  <div class="intro">
+   <%= link_to content.user.username , user_path(content.user), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+
+  </div>
+  <%=  image_tag content.picture.url(:thumbnail),class: "cnimg" if content.picture?   %>
+  
+  <div class="container">
+  <!-- Primary-colored flat button -->
+<button class="mdl-button mdl-js-button mdl-button--primary">
+
+    <%= link_to content.name, content_path(content), class: "links" %>
+    </button>
+<div class="likeme" >
+    <%= link_to like_content_path(content, like: true, :anchor => "content"), method: :post do %>
+
+                        <i class="material-icons" style="font-size:30px;color:#AA030B;">favorite</i>
+                      
+                        <% end %>
+                        &nbsp&nbsp
+                       <span class="mdl-badge"  data-badge="<%= content.totallike %>" >Total Likes</span>
+                       </div>
+    <p>Summary: <%= content.summary %></p> 
+    <p>
+      <span class='quite'><small>Created at: <%= time_ago_in_words(content.created_at) %> ago,</small></span>
+      <span class='quite'><small>Updated at: <%= time_ago_in_words(content.updated_at) %> ago</small></span>
+    </p>
+  </div>
+
+</div>
+
+<br>
+<br>
+
+
+
+
+</div>
+
+
+
+
+
+<% end %>
+<%= will_paginate %>
+</div>
+</main>

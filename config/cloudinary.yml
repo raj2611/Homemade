@@ -1,0 +1,9 @@
+development:
+  cloud_name: "homemade"
+  api_key: "347929794999765"
+  api_secret: "NHEvz2Xg9PU1X_3XN7AjCMPoKgA"
+
+production:
+  cloud_name: "homemade"
+  api_key: "347929794999765"
+  api_secret: "NHEvz2Xg9PU1X_3XN7AjCMPoKgA"

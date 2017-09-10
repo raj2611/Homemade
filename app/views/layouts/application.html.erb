@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homemade</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+   <!--Google Fonts-->
+<%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Allura', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Barrio', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag "https://code.getmdl.io/1.3.0/material.teal-green.min.css" %>
+ <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+ <% if current_page?(root_path) %>
+ <%= javascript_include_tag "main_code" %>
+  <%= stylesheet_link_tag    'main_code', media: 'all' %>
+ <% end %>
+   
+  </head>
+   <body>
+
+<% unless controller.controller_name == "pages" && controller.action_name == "home" %>
+
+
+ <%= render 'layouts/navigation' %>
+ <% end %>
+
+   
+  <%= yield %>
+
+
+</div>
+
+</body>
+
+</html>
