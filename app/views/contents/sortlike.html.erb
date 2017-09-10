@@ -19,10 +19,10 @@
   
   <div class="container">
   <!-- Primary-colored flat button -->
-<button class="mdl-button mdl-js-button mdl-button--primary">
 
-    <%= link_to content.name, content_path(content), class: "links" %>
-    </button>
+
+    <%= link_to content.name, content_path(content), class: "mdl-button mdl-js-button mdl-button--primary" %>
+    
 <div class="likeme" >
     <%= link_to like_content_path(content, like: true, :anchor => "content"), method: :post do %>
 
