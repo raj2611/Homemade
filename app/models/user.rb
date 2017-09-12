@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	has_many :contents
-	has_many :likes
+	has_many :contents,:dependent => :destroy
+	has_many :likes,:dependent => :destroy
 	before_save { self.email = email.downcase }
 	mount_uploader :profilepic, ProfilepicUploader
 	validates :username, presence: true,
